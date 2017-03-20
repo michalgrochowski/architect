@@ -1,5 +1,5 @@
 # architect
-Portfolio made for my friend who is an architect, from his design project
+Portfolio made for my friend who is an architect, from his design project.
 
 Made with:
 - HTML5,
