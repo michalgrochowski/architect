@@ -21,7 +21,7 @@ body {
     border-right: 2px solid black;
     position: relative;
     background-color: #cdcfd3;
-    transition: 0.3s;
+    transition: all 0.3s;
     a {
         color: black;
     }
@@ -67,6 +67,36 @@ body {
     font-size: 40px;
     cursor: pointer;
 }
+.menu-panel__phone {
+    text-decoration: none;
+    margin-left: 50px;
+}
+.menu-panel__phone:hover, .menu-panel__mail:hover, .menu-panel__phone:focus, .menu-panel__phone:focus {
+    text-decoration: none;
+}
+.menu-panel__phone::after {
+    content: "- 502634662";
+    opacity: 0;
+    margin-left: 5px;
+    transition: 0.3s all;
+}
+.menu-panel__phone:hover::after, .menu-panel__phone:focus::after {
+    content: "- 502634662";
+    opacity: 1;
+    margin-left: 5px;
+    transition: 0.3s all;
+}
+.menu-panel__mail {
+    @extend .menu-panel__phone;
+}
+.menu-panel__mail::after {
+    @extend .menu-panel__phone::after;
+    content: "- mateuszsleszynski@hotmail.com";
+}
+.menu-panel__mail:hover::after, .menu-panel__mail:focus::after {
+    @extend .menu-panel__phone:hover::after;
+    content: "- mateuszsleszynski@hotmail.com";
+}
 .title__opener {
     position: absolute;
     top: 0;
@@ -78,21 +108,26 @@ body {
 /* Right panel styles */
 .projects-panel {
     height: 100vh;
-    overflow: scroll;
+    overflow: auto;
     position: relative;
     h3 {
         text-align: center;
     }
 }
-.projects-panel__item {
+.projects-panel__block {
     display: block;
-    width: 100%;
-    height: 250px;
+    height: 300px;
+    padding: 30px;
+}
+.projects-panel__item {
+    transition: 0.3s all;
+    overflow: hidden;
     border: 1px solid black;
     border-radius: 10px;
     position: relative;
-    overflow: hidden;
-    transition: 0.3s all;
+    display: block;
+    width: 100%;
+    height: 100%;
     img {
         width: 100%;
         position: absolute;
@@ -103,7 +138,7 @@ body {
     }
 }
 /* Icons */
-.icon-phone:before { content: '\e803'; font-size: 25px; color: black; margin-right: 10px; margin-left: -40px;}
+.icon-phone:before { content: '\e803'; font-size: 25px; color: black; margin-right: 10px; margin-left: -50px;}
 .icon-mail-alt:before { content: '\e805'; @extend .icon-phone:before;}
 .icon-menu:before { content: '\f0c9'; font-size: 25px; margin-left: -10px;}
 .icon-cancel:before { content: '\e801'; }
@@ -141,8 +176,11 @@ body {
     h1 {
         padding-left: 40px;
     }}
+    .projects-panel__block {
+    height: 200px;
+    padding: 10px;}
     .projects-panel__item {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;}
     .title {
     display: block;
@@ -163,8 +201,8 @@ body {
     display: none;}
     .menu-panel__closer {
     display: none;}
-    .projects-panel__item {
-    padding: 10px;}
+    .projects-panel__block {
+    padding: 15px;}
 }
 
 @media (min-width: 980px) {
@@ -174,9 +212,8 @@ body {
 @media (min-width: 1200px) {
     .menu-panel {
     padding-left: 50px;}
-    .projects-panel__item {
-    margin: 30px;
-    margin-left: 70px;}
+    .projects-panel__block {
+    padding: 30px;}
     .projects-panel__item:hover {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
